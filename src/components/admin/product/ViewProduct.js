@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { APP_BASE_URL } from '../../../configs/constants';
 
 function ViewProduct()
 {
@@ -11,9 +12,9 @@ function ViewProduct()
     useEffect(() => {
 
         let isMounted = true;
-        document.title = "Sách";
+        document.title = "Products";
 
-        axios.get(`/api/book`).then(res=>{
+        axios.get(`/api/products`).then(res=>{
             if(isMounted)
             {
                 if(res.data.success === true)
@@ -40,10 +41,12 @@ function ViewProduct()
             return (
                 <tr key={item.id}>
                     <td>{item.id}</td>
-                    <td>{item.category}</td>
+                    <td>{item.club.name}</td>
                     <td>{item.name}</td>
-                    <td>{item.authorname}</td>
-                    <td><img src={item.image} width="50px" alt={item.name} /></td>
+                    <td>
+                        {item.status === 1 ? 'Stocking' : 'Out of stock'}
+                    </td>
+                    <td><img src={`${APP_BASE_URL}/${item.image}`} width="50px"/></td>
                     {/* <td>
                         <Link to={`edit-product/${item.id}`} className="btn btn-success btn-sm">Edit</Link>
                     </td> */}
@@ -70,13 +73,13 @@ function ViewProduct()
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Thể loại</th>
-                                <th>Tên sách</th>
-                                <th>Tác giả</th>
-                                <th>Hình ảnh</th>
+                                <th>Club</th>
+                                <th>Product name</th>
+                                <th>Status</th>
+                                <th>Image</th>
                                 {/* <th>Edit</th> */}
-                                <th>Giá</th>
-                                <th>Mô tả</th>
+                                <th>Price</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>

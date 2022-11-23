@@ -64,6 +64,7 @@ function AddProduct() {
                     description: '',
                     price: '',
                 });
+                setPicture({img: ''});
                 setError([]);
             }
             // else if(res.data.status === 422)

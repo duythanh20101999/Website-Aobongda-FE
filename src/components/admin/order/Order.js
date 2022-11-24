@@ -40,8 +40,8 @@ function Order() {
                     <td>{item.phone}</td>
                     <td>{item.address}</td>
                     <td>{item.date}</td>
-                    <td>{item.total_price}</td>
-                    <td>{item.status}</td>
+                    <td>{item.totalPrice}</td>
+                    <td>{item.status === 0 ? 'Unpaid' : 'Have been paid'}</td>
                     <td>
                         <Link to={`view-order/${item.id}`} className="btn btn-success btn-sm">View</Link>
                     </td>
@@ -54,7 +54,7 @@ function Order() {
         <div className="container px-4 mt-3">
             <div className="card">
                 <div className="card-header">
-                    <h4>Danh sách đơn hàng  </h4>
+                    <h4>List Order</h4>
                 </div>
                 <div className="card-body">
                     <div className="table-responsive">
@@ -62,14 +62,14 @@ function Order() {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Tài khoản</th>
-                                    <th>Người nhận</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Ngày đặt</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Trạng thái</th>
-                                    <th>Chi tiết đơn hàng</th>
+                                    <th>Username</th>
+                                    <th>Receiver</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Order date</th>
+                                    <th>Total price</th>
+                                    <th>Status</th>
+                                    <th>Order detail</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -46,7 +46,7 @@ function ViewProduct()
                     <td>
                         {item.status === 1 ? 'Stocking' : 'Out of stock'}
                     </td>
-                    <td><img src={`${APP_BASE_URL}/${item.image}`} width="50px"/></td>
+                    <td><img src={`${APP_BASE_URL}/images/${item.image}`} width="50px"/></td>
                     {/* <td>
                         <Link to={`edit-product/${item.id}`} className="btn btn-success btn-sm">Edit</Link>
                     </td> */}

@@ -2,20 +2,20 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-function ViewCategory() {
+function ViewClub() {
 
     const [loading, setLoading] = useState(true);
-    const [categorylist, setCategorylist] = useState([]);
+    const [clublist, setClublist] = useState([]);
 
     useEffect(() => {
         let isMounted = true;
 
-        axios.get(`/api/category`).then(res=>{
+        axios.get(`/api/clubs`).then(res=>{
             if(isMounted)
             {
                 if(res.status === 200)
                 {
-                    setCategorylist(res.data.datas)
+                    setClublist(res.data.datas)
                     setLoading(false);
                 }
             }
@@ -51,19 +51,18 @@ function ViewCategory() {
     var viewcategory_HTMLTABLE = "";
     if(loading)
     {
-        return <h4>Loading Category...</h4>
+        return <h4>Loading Club...</h4>
     }
     else
     {
         viewcategory_HTMLTABLE = 
-        categorylist.map( (item) => {
+        clublist.map( (item) => {
             return (
                 <tr key={item.id}>
-                    <td>{item.id}</td>
+                    <td><Link to={`edit-club/${item.id}`} className="btn btn-success btn-sm">{item.id}</Link></td>
                     <td>{item.name}</td>
-                    <td>
-                        <Link to={`edit-category/${item.id}`} className="btn btn-success btn-sm">Sửa</Link>
-                    </td>
+                    <td>{item.brand.name}</td>
+                    <td>{item.league.name}</td>
                     {/* <td>
                         <button type="button" onClick={ (e) => deleteCategory(e, item.id) } className="btn btn-danger btn-sm">Xóa</button>
                     </td> */}
@@ -76,8 +75,8 @@ function ViewCategory() {
         <div className="container px-4">
             <div className="card mt-4">
                 <div className="card-header">
-                    <h4>Thể loại 
-                        <Link to="/admin/add-category" className="btn btn-primary btn-sm float-end">Thêm thể loại</Link>
+                    <h4>Clubs 
+                        <Link to="/admin/add-club" className="btn btn-primary btn-sm float-end">Add Club</Link>
                     </h4>
                 </div>
                 <div className="card-body">
@@ -86,7 +85,8 @@ function ViewCategory() {
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Edit</th>
+                                <th>Brand</th>
+                                <th>League</th>
                                 {/* <th>Delete</th> */}
                             </tr>
                         </thead>
@@ -100,5 +100,5 @@ function ViewCategory() {
     )
 }
 
-export default ViewCategory;
+export default ViewClub;
 

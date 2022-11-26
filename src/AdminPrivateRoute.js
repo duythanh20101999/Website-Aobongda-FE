@@ -27,6 +27,7 @@ function AdminPrivateRoute({...rest}) {
     }, []);
 
     axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
+        console.log(err)
         if(err.response.status === 401)
         {
             swal("Lỗi xác thực",err.response.data.message,"warning");
@@ -38,6 +39,7 @@ function AdminPrivateRoute({...rest}) {
     axios.interceptors.response.use(function (response) {
             return response;
         }, function (error) {
+            // console.log(error)
             if(error.response.status === 403) // Access Denied
             {
                 swal("Forbidden",error.response.data.message,"warning");

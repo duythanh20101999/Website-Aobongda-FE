@@ -11,9 +11,9 @@ function ViewClub() {
 
     axios.get(`/api/clubs`).then((res) => {
       if (isMountered) {
-        if (res.data.status === 200) {
+        if (res.data.success === true) {
           // console.log(res.data.club);
-          setClub(res.data.club);
+          setClub(res.data.datas);
           setLoading(false);
         }
       }

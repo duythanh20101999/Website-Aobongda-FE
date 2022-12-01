@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 function ViewClub() {
   const [loading, setLoading] = useState(true);
   const [club, setClub] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     let isMountered = true;
-
     axios.get(`/api/clubs`).then((res) => {
       if (isMountered) {
         if (res.data.success === true) {
@@ -18,7 +18,6 @@ function ViewClub() {
         }
       }
     });
-
     return () => {
       isMountered = false;
     };
@@ -32,11 +31,11 @@ function ViewClub() {
       return (
         <div className="col-md-4" key={idx}>
           <div className="card">
-            <Link to={`collections/${item.league.name}`}>
+            {/* <Link to={`collections/${item.name}`}>
               <img src="" className="w-100" alt={item.name} />
-            </Link>
+            </Link> */}
             <div className="card-body">
-              <Link to={`collections/${item.league.name}`}>
+              <Link to={`collections/${item.name}`}>
                 <h5>{item.name}</h5>
               </Link>
             </div>

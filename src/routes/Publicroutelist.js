@@ -39,7 +39,7 @@ const publicRoutesList = [
   },
   { path: "/collections", exact: true, name: "ViewClub", component: ViewClub },
   {
-    path: "/collections/:club/",
+    path: "/collections/:id/",
     exact: true,
     name: "ViewProduct",
     component: ViewProduct,

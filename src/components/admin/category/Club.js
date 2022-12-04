@@ -89,14 +89,6 @@ function Club() {
                 <div className="card-body">
 
                     <form onSubmit={submitClub} id="CATEGORY_FORM">
-                        {/* <ul className="nav nav-tabs" id="myTab" role="tablist">
-                            <li className="nav-item" role="presentation">
-                                <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                            </li>
-                            <li className="nav-item" role="presentation">
-                                <button className="nav-link" id="seo-tags-tab" data-bs-toggle="tab" data-bs-target="#seo-tags" type="button" role="tab" aria-controls="seo-tags" aria-selected="false">SEO Tags</button>
-                            </li>
-                        </ul> */}
                         <div className="tab-content" id="myTabContent">
                             <div className="form-group mb-3">
                                 <label>Choose brand</label>
@@ -124,7 +116,7 @@ function Club() {
                             </div>
                             <div className="form-group mb-3">
                                 <label>Name</label>
-                                <input type="text" name="name" onChange={handleInput} value={clubInput.name} className="form-control" />
+                                <input type="text" name="name" onChange={handleInput} value={clubInput.name} className="form-control" required/>
                             </div>
                         </div>
                         <button type="submit" className="btn btn-primary px-4 float-end">Submit</button>

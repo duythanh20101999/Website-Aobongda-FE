@@ -17,7 +17,7 @@ const Navbar = () => {
     return (
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <div className='container-fluid'>
-                <Link className="navbar-brand ps-3" to="/admin">Website Book</Link>
+                <Link className="navbar-brand ps-3" to="/admin">Website Football</Link>
 
                 {/* <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i className="fas fa-bars"></i></button> */}
 
@@ -34,9 +34,6 @@ const Navbar = () => {
                             {currentUser}<i className="fas fa-user fa-fw"></i>
                         </Link>
                         <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            {/* <li><Link className="dropdown-item" to="#!">Settings</Link></li>
-            <li><Link className="dropdown-item" to="#!">Activity Log</Link></li>
-            <li><hr className="dropdown-divider" /></li> */}
                             <li className="dropdown-item" onClick={logoutSubmit}>Logout</li>
                         </ul>
                     </li>

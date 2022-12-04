@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
+import { numberFormat } from '../../../configs/constants';
 
 function AddProduct() {
     const [categorylist, setCategorylist] = useState([]);
     const [productInput, setProduct] = useState({
         id_club: '',
         name: '',
-        status: '',
         description: '',
         price: '',
     });
@@ -48,10 +48,8 @@ function AddProduct() {
         formData.append('img', picture.img);
         formData.append('id_club', productInput.id_club);
         formData.append('name', productInput.name);
-        formData.append('status', productInput.status);
         formData.append('price', productInput.price);
         formData.append('description', productInput.description);
-        console.log(formData)
 
         axios.post(`/api/admin/create_product`, formData).then(res => {
             if (res.data.success === true) {
@@ -60,7 +58,6 @@ function AddProduct() {
                     ...productInput,
                     id_club: '',
                     name: '',
-                    status: '',
                     description: '',
                     price: '',
                 });
@@ -104,24 +101,22 @@ function AddProduct() {
 
                             <div className="form-group mb-3">
                                 <label>Name</label>
-                                <input type="text" name="name" onChange={handleInput} value={productInput.name} className="form-control" />
+                                <input type="text" name="name" onChange={handleInput} value={productInput.name} className="form-control" required/>
                                 <small className="text-danger">{errorlist.name}</small>
                             </div>
                             <div className="form-group mb-3">
                                 <label>Description</label>
-                                <textarea name="description" onChange={handleInput} value={productInput.description} className="form-control"></textarea>
+                                <textarea name="description" onChange={handleInput} value={productInput.description} className="form-control" required></textarea>
                             </div>
                             <div className="form-group mb-3">
-                                <label>Status</label>
-                                <input name="status" type="number" onChange={handleInput} value={productInput.status} className="form-control"></input>
-                            </div>
-                            <div className="form-group mb-3">
-                                <label>Price</label>
-                                <input name="price" type="number" onChange={handleInput} value={productInput.price} className="form-control"></input>
+                                <label>Price ({numberFormat(productInput.price)})</label>
+                                <input name="price" type="number" onChange={handleInput} 
+                                value={productInput.price} className="form-control" 
+                                max="2000000" min="10000" required></input>
                             </div>
                             <div className="col-md-8 form-group mb-3">
                                 <label>Image</label>
-                                <input type="file" name="img" onChange={handleImage} className="form-control" />
+                                <input type="file" name="img" onChange={handleImage} className="form-control" required/>
                                 <small className="text-danger">{errorlist.image}</small>
                             </div>
                         </div>

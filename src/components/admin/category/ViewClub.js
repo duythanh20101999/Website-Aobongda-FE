@@ -27,27 +27,6 @@ function ViewClub() {
 
     }, []);
 
-    // const deleteCategory = (e, id) => {
-    //     e.preventDefault();
-        
-    //     const thisClicked = e.currentTarget;
-    //     thisClicked.innerText = "Deleting";
-
-    //     axios.delete(`/api/delete-category/${id}`).then(res=>{
-    //         if(res.data.status === 200)
-    //         {
-    //             swal("Success",res.data.message,"success");
-    //             thisClicked.closest("tr").remove();
-    //         }
-    //         else if(res.data.status === 404)
-    //         {
-    //             swal("Success",res.data.message,"success");
-    //             thisClicked.innerText = "Delete";
-    //         }
-    //     });
-
-    // }
-
     var viewcategory_HTMLTABLE = "";
     if(loading)
     {
@@ -59,13 +38,10 @@ function ViewClub() {
         clublist.map( (item) => {
             return (
                 <tr key={item.id}>
-                    <td><Link to={`edit-club/${item.id}`} className="btn btn-success btn-sm">{item.id}</Link></td>
+                    <td className='center-format'><Link to={`edit-club/${item.id}`} className="btn btn-success btn-sm">{item.id}</Link></td>
                     <td>{item.name}</td>
                     <td>{item.brand.name}</td>
                     <td>{item.league.name}</td>
-                    {/* <td>
-                        <button type="button" onClick={ (e) => deleteCategory(e, item.id) } className="btn btn-danger btn-sm">Xóa</button>
-                    </td> */}
                 </tr>
             )
         });
@@ -75,7 +51,7 @@ function ViewClub() {
         <div className="container px-4">
             <div className="card mt-4">
                 <div className="card-header">
-                    <h4>Clubs 
+                    <h4>List Clubs 
                         <Link to="/admin/add-club" className="btn btn-primary btn-sm float-end">Add Club</Link>
                     </h4>
                 </div>
@@ -83,11 +59,10 @@ function ViewClub() {
                     <table className="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th className='center-format' style={{width: "10%"}}>ID</th>
                                 <th>Name</th>
                                 <th>Brand</th>
                                 <th>League</th>
-                                {/* <th>Delete</th> */}
                             </tr>
                         </thead>
                         <tbody>

@@ -55,20 +55,20 @@ function ProductDetail(props) {
 
     // axios.post(`/api/cart/add`, data).then((res) => {
     axios
-      .post(`/api/cart/add/?productId=${product.id}&?quantity=${quantity}`)
+      .post(`/api/cart/add?productId=${product.id}&quantity=${quantity}`)
       .then((res) => {
-        if (res.data.status === 200) {
+        if (res.data.status === true) {
           //Created - Data Inserted
           swal("Success", res.data.message, "success");
-        } else if (res.data.status === 409) {
-          //Already added to cart
-          swal("Success", res.data.message, "success");
-        } else if (res.data.status === 401) {
-          //Unauthenticated
-          swal("Error", res.data.message, "error");
-        } else if (res.data.status === 500) {
-          //Not Found
-          swal("Warning", res.data.message, "warning");
+          // } else if (res.data.status === 409) {
+          //   //Already added to cart
+          //   swal("Success", res.data.message, "success");
+          // } else if (res.data.status === 401) {
+          //   //Unauthenticated
+          //   swal("Error", res.data.message, "error");
+          // } else if (res.data.status === 500) {
+          //   //Not Found
+          //   swal("Warning", res.data.message, "warning");
         }
       });
   };

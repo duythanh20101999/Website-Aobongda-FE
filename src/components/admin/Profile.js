@@ -74,7 +74,7 @@ function Profile() {
                     </td>
                     <td className='text-format'>
                         <div className="d-flex flex-row bd-highlight">
-                            <div className="p-2 flex-fill bd-highlight">{item.status ? "Hoạt động" : "Block"}</div>
+                            <div className="p-2 flex-fill bd-highlight">{item.status ? "Active " : "Block"}</div>
                             {display_status}
                         </div>
                     </td>

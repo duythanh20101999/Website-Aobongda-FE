@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
+import { numberFormat } from '../../../configs/constants';
 
 function EditProduct(props) {
     const history = useHistory();
@@ -38,7 +39,6 @@ function EditProduct(props) {
                     id_club: res.data.data.club.id,
                     name: res.data.data.name,
                     description: res.data.data.description,
-                    status: res.data.data.status,
                     price: res.data.data.price,
                 });
             }
@@ -115,33 +115,20 @@ function EditProduct(props) {
                             <small className="text-danger">{errorlist.id_club}</small>
                         </div>
                         <div className="form-group mb-3">
-                            <label>Tên sản phẩm</label>
+                            <label>Name</label>
                             <input type="text" name="name" onChange={handleInput} value={productInput.name} className="form-control" />
                             <small className="text-danger">{errorlist.name}</small>
                         </div>
                         <div className="form-group mb-3">
-                            <label>Mô tả</label>
+                            <label>Description</label>
                             <textarea name="description" onChange={handleInput} value={productInput.description} className="form-control"></textarea>
-                        </div>
-                        {/* <div className="form-group mb-3">
-                            <label>Trạng thái</label>
-                            <input name="status" type="number" onChange={handleInput} value={productInput.status} className="form-control"></input>
-                        </div> */}
-
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" onChange={handleInput} name="status" id="inlineRadio1"
-                                value={0} checked={productInput.status === 0}/>
-                            <label className="form-check-label" htmlFor="inlineRadio1">Out sold</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" onChange={handleInput} name="status" id="inlineRadio2"
-                                value={1} checked={productInput.status === 1}/>
-                            <label className="form-check-label" htmlFor="inlineRadio2">Stocking</label>
                         </div>
 
                         <div className="form-group mb-3">
-                            <label>Giá</label>
-                            <input name="price" type="number" onChange={handleInput} value={productInput.price} className="form-control"></input>
+                            <label>Price ({numberFormat(productInput.price)})</label>
+                            <input name="price" type="number" onChange={handleInput}
+                                value={productInput.price} className="form-control"
+                                max="2000000" min="10000" required></input>
                         </div>
                         <div className="col-md-8 form-group mb-3">
                             <label>Image</label>

@@ -35,10 +35,10 @@ function Cart() {
     };
   }, [history]);
 
-  const handleDecrement = (cart_id) => {
+  const handleDecrement = (cart_id, quantity) => {
     setCart((cart) =>
       cart.map((item) =>
-        cart_id === item.product_id
+        cart_id === item.product_Id
           ? {
               ...item,
               quantity: item.quantity - (item.quantity > 1 ? 1 : 0),
@@ -46,12 +46,12 @@ function Cart() {
           : item
       )
     );
-    updateCartQuantity(cart_id, "dec");
+    updateCartQuantity(cart_id, quantity - 1);
   };
-  const handleIncrement = (cart_id) => {
+  const handleIncrement = (cart_id, quantity) => {
     setCart((cart) =>
       cart.map((item) =>
-        cart_id === item.product_id
+        cart_id === item.product_Id
           ? {
               ...item,
               quantity: item.quantity + (item.quantity < 10 ? 1 : 0),
@@ -59,14 +59,14 @@ function Cart() {
           : item
       )
     );
-    updateCartQuantity(cart_id, "inc");
+    updateCartQuantity(cart_id, quantity + 1);
   };
   function updateCartQuantity(cart_id, quantity) {
     axios
       .put(`/api/cart/update?productId=${cart_id}&quantity=${quantity}`)
       .then((res) => {
         if (res.data.status === true) {
-          // swal("Success",res.data.message,"success");
+          swal("Success", res.data.message, "success");
         }
       });
   }
@@ -81,7 +81,7 @@ function Cart() {
       if (res.data.status === true) {
         swal("Success", res.data.message, "success");
         thisClicked.closest("tr").remove();
-      } else if (res.data.status === 404) {
+      } else if (res.data.status === false) {
         swal("Error", res.data.message, "error");
         thisClicked.innerText = "Remove";
       }
@@ -129,7 +129,9 @@ function Cart() {
                       <div className="input-group">
                         <button
                           type="button"
-                          onClick={() => handleDecrement(item.product_id)}
+                          onClick={() =>
+                            handleDecrement(item.product_Id, item.quantity)
+                          }
                           className="input-group-text"
                         >
                           -
@@ -139,7 +141,9 @@ function Cart() {
                         </div>
                         <button
                           type="button"
-                          onClick={() => handleIncrement(item.product_id)}
+                          onClick={() =>
+                            handleIncrement(item.product_Id, item.quantity)
+                          }
                           className="input-group-text"
                         >
                           +
@@ -152,7 +156,7 @@ function Cart() {
                     <td width="10%">
                       <button
                         type="button"
-                        onClick={(e) => deleteCartItem(e, item.product_id)}
+                        onClick={(e) => deleteCartItem(e, item.product_Id)}
                         className="btn btn-danger btn-sm"
                       >
                         Remove

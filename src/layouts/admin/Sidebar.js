@@ -41,6 +41,29 @@ const Sidebar = () => {
                         Order
                     </Link>
 
+                    <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse" data-bs-target="#collapseBrand" aria-expanded="false" aria-controls="collapseBrand">
+                        <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
+                        Brand
+                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                    </Link>
+                    <div className="collapse" id="collapseBrand" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav className="sb-sidenav-menu-nested nav">
+                        <Link className="nav-link" to="/admin/add-brand">Add Brand</Link>
+                        <Link className="nav-link" to="/admin/view-brand">List Brand</Link>
+                        </nav>
+                    </div>
+
+                    <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse" data-bs-target="#collapseLeague" aria-expanded="false" aria-controls="collapseLeague">
+                        <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
+                        League
+                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                    </Link>
+                    <div className="collapse" id="collapseLeague" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav className="sb-sidenav-menu-nested nav">
+                        <Link className="nav-link" to="/admin/add-league">Add League</Link>
+                        <Link className="nav-link" to="/admin/view-league">List League</Link>
+                        </nav>
+                    </div>
                     
                 </div>
             </div>

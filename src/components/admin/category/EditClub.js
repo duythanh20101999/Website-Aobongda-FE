@@ -82,8 +82,8 @@ function EditClub(props) {
         <div className="container px-4">
             <div className="card mt-4">
                 <div className="card-header">
-                    <h4>Sửa thể loại
-                        <Link to="/admin/view-category" className="btn btn-primary btn-sm float-end">Quay lại</Link>
+                    <h4>Edit Club
+                        <Link to="/admin/view-category" className="btn btn-primary btn-sm float-end">List Club</Link>
                     </h4>
                 </div>
                 <div className="card-body">
@@ -121,7 +121,7 @@ function EditClub(props) {
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" className="btn btn-primary px-4 float-end">Cập nhật</button>
+                        <button type="submit" className="btn btn-primary px-4 float-end">Update</button>
                     </form>
 
                 </div>

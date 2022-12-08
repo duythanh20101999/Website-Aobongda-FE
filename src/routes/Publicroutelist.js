@@ -52,7 +52,12 @@ const publicRoutesList = [
   },
   { path: "/cart", exact: true, name: "Cart", component: Cart },
   { path: "/checkout", exact: true, name: "Checkout", component: Checkout },
-  { path: "/thank-you", exact: true, name: "Thankyou", component: Thankyou },
+  {
+    path: "/thank-you",
+    exact: true,
+    name: "Thankyou",
+    component: Thankyou,
+  },
 ];
 
 export default publicRoutesList;

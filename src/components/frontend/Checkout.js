@@ -16,14 +16,18 @@ function Checkout() {
   var totalCartPrice = 0;
 
   const [checkoutInput, setCheckoutInput] = useState({
-    firstname: "",
-    lastname: "",
-    phone: "",
-    email: "",
     address: "",
-    city: "",
-    state: "",
-    zipcode: "",
+    note: "",
+    code: "",
+    id_payment: "",
+    //firstname: "",
+    //lastname: "",
+    //phone: "",
+    //email: "",
+    //address: "",
+    //city: "",
+    //state: "",
+    //zipcode: "",
   });
   const [error, setError] = useState([]);
 
@@ -35,7 +39,7 @@ function Checkout() {
         if (res.data.status === true) {
           setCart(res.data.data);
           setLoading(false);
-        } else if (res.data.status === 401) {
+        } else if (res.data.status === false) {
           history.push("/");
           swal("Warning", res.data.message, "error");
         }
@@ -53,16 +57,19 @@ function Checkout() {
   };
 
   var orderinfo_data = {
-    firstname: checkoutInput.firstname,
-    lastname: checkoutInput.lastname,
-    phone: checkoutInput.phone,
-    email: checkoutInput.email,
+    //firstname: checkoutInput.firstname,
+    //lastname: checkoutInput.lastname,
+    //phone: checkoutInput.phone,
+    //email: checkoutInput.email,
     address: checkoutInput.address,
-    city: checkoutInput.city,
-    state: checkoutInput.state,
-    zipcode: checkoutInput.zipcode,
-    payment_mode: "Paid by PayPal",
-    payment_id: "",
+    note: checkoutInput.note,
+    code: checkoutInput.code,
+    id_payment: checkoutInput.id_payment,
+    //city: checkoutInput.city,
+    //state: checkoutInput.state,
+    //zipcode: checkoutInput.zipcode,
+    // payment_mode: "Paid by PayPal",
+    // payment_id: "",
   };
 
   // Paypal Code
@@ -88,11 +95,11 @@ function Checkout() {
       orderinfo_data.payment_id = details.id;
 
       axios.post(`/api/order`, orderinfo_data).then((res) => {
-        if (res.data.status === true) {
+        if (res.data.success === true) {
           swal("Order Placed Successfully", res.data.message, "success");
           setError([]);
           history.push("/thank-you");
-        } else if (res.data.status === 422) {
+        } else if (res.data.success === false) {
           swal("All fields are mandetory", "", "error");
           setError(res.data.errors);
         }
@@ -100,93 +107,95 @@ function Checkout() {
     });
   };
   // End-Paypal Code
-
   const submitOrder = (e, payment_mode) => {
     e.preventDefault();
 
     var data = {
-      firstname: checkoutInput.firstname,
-      lastname: checkoutInput.lastname,
-      phone: checkoutInput.phone,
-      email: checkoutInput.email,
+      // firstname: checkoutInput.firstname,
+      // lastname: checkoutInput.lastname,
+      // phone: checkoutInput.phone,
+      // email: checkoutInput.email,
       address: checkoutInput.address,
-      city: checkoutInput.city,
-      state: checkoutInput.state,
-      zipcode: checkoutInput.zipcode,
-      payment_mode: payment_mode,
-      payment_id: "",
+      note: checkoutInput.note,
+      code: checkoutInput.code,
+      id_payment: checkoutInput.id_payment,
+      // city: checkoutInput.city,
+      // state: checkoutInput.state,
+      // zipcode: checkoutInput.zipcode,
+      // payment_mode: payment_mode,
+      // payment_id: "",
     };
 
     switch (payment_mode) {
       case "cod":
         axios.post(`/api/order`, data).then((res) => {
-          if (res.data.status === true) {
+          if (res.data.success === true) {
             swal("Order Placed Successfully", res.data.message, "success");
             setError([]);
             history.push("/thank-you");
-          } else if (res.data.status === 422) {
+          } else if (res.data.success === false) {
             swal("All fields are mandetory", "", "error");
             setError(res.data.errors);
           }
         });
         break;
 
-      case "razorpay":
-        axios.post(`/api/validate-order`, data).then((res) => {
-          if (res.data.status === 200) {
-            setError([]);
-            var options = {
-              key: "rzp_test_5AEIUNtEJxBPvS",
-              amount: 1 * 100,
-              name: "Funda Reat Ecom",
-              description: "Thank you for purchasing with Funda",
-              image: "https://example.com/your_logo",
-              handler: function (response) {
-                data.payment_id = response.razorpay_payment_id;
+      // case "razorpay":
+      //   axios.post(`/api/validate-order`, data).then((res) => {
+      //     if (res.data.status === 200) {
+      //       setError([]);
+      //       var options = {
+      //         key: "rzp_test_5AEIUNtEJxBPvS",
+      //         amount: 1 * 100,
+      //         name: "Funda Reat Ecom",
+      //         description: "Thank you for purchasing with Funda",
+      //         image: "https://example.com/your_logo",
+      //         handler: function (response) {
+      //           data.payment_id = response.razorpay_payment_id;
 
-                axios.post(`/api/order`, data).then((place_res) => {
-                  if (place_res.data.status === true) {
-                    swal(
-                      "Order Placed Successfully",
-                      place_res.data.message,
-                      "success"
-                    );
-                    history.push("/thank-you");
-                  }
-                });
-              },
-              prefill: {
-                name: data.firstname + data.lastname,
-                email: data.email,
-                contact: data.phone,
-              },
-              theme: {
-                color: "#3399cc",
-              },
-            };
-            var rzp = new window.Razorpay(options);
-            rzp.open();
-          } else if (res.data.status === 422) {
-            swal("All fields are mandetory", "", "error");
-            setError(res.data.errors);
-          }
-        });
-        break;
+      //           axios.post(`/api/order`, data).then((place_res) => {
+      //             if (place_res.data.status === true) {
+      //               swal(
+      //                 "Order Placed Successfully",
+      //                 place_res.data.message,
+      //                 "success"
+      //               );
+      //               history.push("/thank-you");
+      //             }
+      //           });
+      //         },
+      //         prefill: {
+      //           name: data.firstname + data.lastname,
+      //           email: data.email,
+      //           contact: data.phone,
+      //         },
+      //         theme: {
+      //           color: "#3399cc",
+      //         },
+      //       };
+      //       var rzp = new window.Razorpay(options);
+      //       rzp.open();
+      //     } else if (res.data.status === 422) {
+      //       swal("All fields are mandetory", "", "error");
+      //       setError(res.data.errors);
+      //     }
+      //   });
+      //   break;
 
-      case "payonline":
-        axios.post(`/api/validate-order`, data).then((res) => {
-          if (res.data.status === 200) {
-            setError([]);
-            var myModal = new window.bootstrap.Modal(
-              document.getElementById("payOnlineModal")
-            );
-            myModal.show();
-          } else if (res.data.status === 422) {
-            swal("All fields are mandetory", "", "error");
-            setError(res.data.errors);
-          }
-        });
-        break;
+      // case "payonline":
+      //   axios.post(`/api/validate-order`, data).then((res) => {
+      //     if (res.data.status === 200) {
+      //       setError([]);
+      //       var myModal = new window.bootstrap.Modal(
+      //         document.getElementById("payOnlineModal")
+      //       );
+      //       myModal.show();
+      //     } else if (res.data.status === 422) {
+      //       swal("All fields are mandetory", "", "error");
+      //       setError(res.data.errors);
+      //     }
+      //   });
+      //   break;
 
       default:
         break;
@@ -211,18 +220,18 @@ function Checkout() {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group mb-3">
-                      <label> First Name</label>
+                      <label> Address</label>
                       <input
                         type="text"
-                        name="firstname"
+                        name="address"
                         onChange={handleInput}
-                        value={checkoutInput.firstname}
+                        value={checkoutInput.address}
                         className="form-control"
                       />
-                      <small className="text-danger">{error.firstname}</small>
+                      <small className="text-danger">{error.address}</small>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <div className="form-group mb-3">
                       <label> Last Name</label>
                       <input
@@ -260,47 +269,47 @@ function Checkout() {
                       />
                       <small className="text-danger">{error.email}</small>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-md-12">
                     <div className="form-group mb-3">
-                      <label> Full Address</label>
+                      <label> Note</label>
                       <textarea
                         rows="3"
-                        name="address"
+                        name="note"
                         onChange={handleInput}
-                        value={checkoutInput.address}
+                        value={checkoutInput.note}
                         className="form-control"
                       ></textarea>
-                      <small className="text-danger">{error.address}</small>
+                      <small className="text-danger">{error.note}</small>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label>City</label>
+                      <label>Code</label>
                       <input
                         type="text"
-                        name="city"
+                        name="code"
                         onChange={handleInput}
-                        value={checkoutInput.city}
+                        value={checkoutInput.code}
                         className="form-control"
                       />
-                      <small className="text-danger">{error.city}</small>
+                      <small className="text-danger">{error.code}</small>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="form-group mb-3">
-                      <label>State</label>
+                      <label>id_payment</label>
                       <input
                         type="text"
-                        name="state"
+                        name="id_payment"
                         onChange={handleInput}
-                        value={checkoutInput.state}
+                        value={checkoutInput.id_payment}
                         className="form-control"
                       />
-                      <small className="text-danger">{error.state}</small>
+                      <small className="text-danger">{error.id_payment}</small>
                     </div>
                   </div>
-                  <div className="col-md-4">
+                  {/* <div className="col-md-4">
                     <div className="form-group mb-3">
                       <label>Zip Code</label>
                       <input
@@ -312,7 +321,7 @@ function Checkout() {
                       />
                       <small className="text-danger">{error.zipcode}</small>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-md-12">
                     <div className="form-group text-end">
                       <button
@@ -322,7 +331,7 @@ function Checkout() {
                       >
                         Place Order
                       </button>
-                      <button
+                      {/* <button
                         type="button"
                         className="btn btn-primary mx-1"
                         onClick={(e) => submitOrder(e, "razorpay")}
@@ -335,7 +344,7 @@ function Checkout() {
                         onClick={(e) => submitOrder(e, "payonline")}
                       >
                         Pay Online
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
@@ -348,8 +357,9 @@ function Checkout() {
               <thead>
                 <tr>
                   <th width="50%">Product</th>
+                  <th width="50%">Image</th>
                   <th>Price</th>
-                  <th>Qty</th>
+                  <th>Quantity</th>
                   <th>Total</th>
                 </tr>
               </thead>
@@ -359,9 +369,23 @@ function Checkout() {
                   return (
                     <tr key={idx}>
                       <td>{item.item.productName}</td>
-                      <td>{item.item.price}</td>
-                      <td>{item.quantity}</td>
-                      <td>{item.item.price * item.quantity}</td>
+                      <td width="10%">
+                        <img
+                          src={`http://localhost:8083/images/${item.item.image}`}
+                          alt={item.item.productName}
+                          width="50px"
+                          height="50px"
+                        />
+                      </td>
+                      <td width="15%" className="text-center">
+                        {item.item.price}
+                      </td>
+                      <td width="15%" className="text-center">
+                        {item.quantity}
+                      </td>
+                      <td width="15%" className="text-center">
+                        {item.item.price * item.quantity}
+                      </td>
                     </tr>
                   );
                 })}

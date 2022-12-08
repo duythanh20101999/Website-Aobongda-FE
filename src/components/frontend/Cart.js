@@ -66,7 +66,7 @@ function Cart() {
       .put(`/api/cart/update?productId=${cart_id}&quantity=${quantity}`)
       .then((res) => {
         if (res.data.status === true) {
-          swal("Success", res.data.message, "success");
+          //swal("Success", res.data.message, "success");
         }
       });
   }

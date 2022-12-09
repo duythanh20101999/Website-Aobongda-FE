@@ -100,11 +100,6 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/collections">
                 Club
               </Link>
@@ -112,6 +107,11 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link" to="/cart">
                 Cart
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/order">
+                Order
               </Link>
             </li>
             {AuthButtons}

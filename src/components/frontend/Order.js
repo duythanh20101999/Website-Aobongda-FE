@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { formatDate, numberFormat } from "../../../configs/constants";
+//import { formatDate, numberFormat } from "../../../configs/constants";
+import moment from "moment";
+export const numberFormat = (value) =>
+  new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(value);
 
+export const formatDate = (value) =>
+  moment(value).format("DD-MM-YYYY").split("T")[0];
 function Order() {
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState([]);
@@ -11,7 +19,7 @@ function Order() {
     let isMounted = true;
     document.title = "Orders";
 
-    axios.get(`/api/admin/orders`).then((res) => {
+    axios.get(`/api/ordersuser`).then((res) => {
       if (isMounted) {
         if (res.data.success === true) {
           setOrders(res.data.datas);

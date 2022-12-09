@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
-import { APP_BASE_URL } from "../../../configs/constants";
+import { APP_BASE_URL, numberFormat } from "../../../configs/constants";
 
 function ProductDetail(props) {
   const history = useHistory();
@@ -153,7 +153,7 @@ function ProductDetail(props) {
               </h4>
               <p> {product.description} </p>
               <h4 className="mb-1">
-                Rs: {product.price} ₫
+                Rs: {numberFormat(product.price)}
                 {/* <s className="ms-2"> Rs: {product.original_price} </s> */}
               </h4>
               <div>{avail_stock}</div>

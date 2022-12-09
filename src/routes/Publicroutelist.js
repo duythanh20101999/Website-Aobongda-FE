@@ -1,6 +1,7 @@
 import Home from "../components/frontend/Home";
 import About from "../components/frontend/About";
-import Contact from "../components/frontend/Contact";
+import Order from "../components/frontend/Order";
+import OrderDetail from "../components/frontend/OrderDetail";
 import Page403 from "../components/errors/Page403";
 import Page404 from "../components/errors/Page404";
 import Register from "../components/frontend/auth/Register";
@@ -19,7 +20,13 @@ import ChangePassword from "../components/frontend/auth/ChangePassword";
 const publicRoutesList = [
   { path: "/", exact: true, name: "Home", component: Home },
   { path: "/about", exact: true, name: "About", component: About },
-  { path: "/contact", exact: true, name: "Contact", component: Contact },
+  { path: "/order", exact: true, name: "Order", component: Order },
+  {
+    path: "/order/:id",
+    exact: true,
+    name: "OrderDetail",
+    component: OrderDetail,
+  },
   { path: "/403", exact: true, name: "Page403", component: Page403 },
   { path: "/404", exact: true, name: "Page404", component: Page404 },
   { path: "/login", exact: true, name: "Login", component: Login },

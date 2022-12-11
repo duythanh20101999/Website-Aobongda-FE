@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { Link, useHistory } from "react-router-dom";
+export const numberFormat = (value) =>
+  new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(value);
 
 function Cart() {
   const history = useHistory();
@@ -70,7 +75,6 @@ function Cart() {
         }
       });
   }
-
   const deleteCartItem = (e, cart_id) => {
     e.preventDefault();
 
@@ -81,6 +85,7 @@ function Cart() {
       if (res.data.status === true) {
         swal("Success", res.data.message, "success");
         thisClicked.closest("tr").remove();
+        window.location.reload();
       } else if (res.data.status === false) {
         swal("Error", res.data.message, "error");
         thisClicked.innerText = "Remove";
@@ -123,7 +128,7 @@ function Cart() {
                     </td>
                     <td>{item.item.productName}</td>
                     <td width="15%" className="text-center">
-                      {item.item.price}
+                      {numberFormat(item.item.price)}
                     </td>
                     <td width="15%">
                       <div className="input-group">
@@ -151,7 +156,7 @@ function Cart() {
                       </div>
                     </td>
                     <td width="15%" className="text-center">
-                      {item.item.price * item.quantity}
+                      {numberFormat(item.item.price * item.quantity)}
                     </td>
                     <td width="10%">
                       <button
@@ -174,11 +179,15 @@ function Cart() {
             <div className="card card-body mt-3">
               <h4>
                 Sub Total:
-                <span className="float-end">{totalCartPrice}</span>
+                <span className="float-end">
+                  {numberFormat(totalCartPrice)}
+                </span>
               </h4>
               <h4>
                 Grand Total:
-                <span className="float-end">{totalCartPrice}</span>
+                <span className="float-end">
+                  {numberFormat(totalCartPrice)}
+                </span>
               </h4>
               <hr />
               <Link to="/checkout" className="btn btn-primary">

@@ -159,6 +159,11 @@ function Navbar() {
 									Cart
 								</Link>
 							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/order">
+									Order
+								</Link>
+							</li>
 							{AuthButtons}
 						</ul>
 					</div>

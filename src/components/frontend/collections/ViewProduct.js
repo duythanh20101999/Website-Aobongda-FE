@@ -145,13 +145,13 @@ function ViewProduct(props) {
 
 			</div>
 
-			<div className="py-3">
-				<div className="container">
-					<div className="row">{showProductList}</div>
-				</div>
-			</div>
-		</div>
-	);
+      <div className="py-3">
+        <div className="container">
+          <div className="row">{showProductList}</div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ViewProduct;

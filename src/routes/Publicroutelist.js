@@ -15,6 +15,7 @@ import Thankyou from "../components/frontend/Thankyou";
 import Verify from "../components/frontend/auth/Verify";
 import ForgotPassword from "../components/frontend/auth/ForgotPassword";
 import ChangePassword from "../components/frontend/auth/ChangePassword";
+import SearchProduct from "../components/frontend/collections/SearchProduct";
 
 const publicRoutesList = [
   { path: "/", exact: true, name: "Home", component: Home },
@@ -43,6 +44,18 @@ const publicRoutesList = [
     exact: true,
     name: "ViewProduct",
     component: ViewProduct,
+  },
+  {
+    path: "/league/:id_league/",
+    exact: true,
+    name: "ViewProduct",
+    component: ViewProduct,
+  },
+  {
+    path: "/listProduct/",
+    exact: true,
+    name: "SearchProduct",
+    component: SearchProduct,
   },
   {
     path: "/collections/:club/:product",

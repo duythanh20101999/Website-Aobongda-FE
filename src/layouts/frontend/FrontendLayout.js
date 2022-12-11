@@ -6,6 +6,7 @@ import publicRoutesList from '../../routes/Publicroutelist';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+import '../../components/admin/App.css'
 
 const FrontendLayout = () => {
 
@@ -13,7 +14,7 @@ const FrontendLayout = () => {
         <div>
             <Navbar />
             
-                <div>
+                <div className='container'>
                         
                     <Switch>
                         {publicRoutesList.map((routedata, idx) => {

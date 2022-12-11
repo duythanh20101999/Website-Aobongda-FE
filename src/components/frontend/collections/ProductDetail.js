@@ -12,10 +12,8 @@ function ProductDetail(props) {
 
   useEffect(() => {
     let isMounted = true;
-
-    const club = props.match.params.club;
     const name_product = props.match.params.product;
-    axios.get(`/api/product/?name=${name_product}`).then((res) => {
+    axios.get(`/api/product/${name_product}`).then((res) => {
       if (isMounted) {
         if (res.data.success === true) {
           setProduct(res.data.data);
@@ -60,15 +58,6 @@ function ProductDetail(props) {
         if (res.data.status === true) {
           //Created - Data Inserted
           swal("Success", res.data.message, "success");
-          // } else if (res.data.status === 409) {
-          //   //Already added to cart
-          //   swal("Success", res.data.message, "success");
-          // } else if (res.data.status === 401) {
-          //   //Unauthenticated
-          //   swal("Error", res.data.message, "error");
-          // } else if (res.data.status === 500) {
-          //   //Not Found
-          //   swal("Warning", res.data.message, "warning");
         }
       });
   };
@@ -127,7 +116,7 @@ function ProductDetail(props) {
       <div className="py-3 bg-warning">
         <div className="container">
           <h6>
-            Collections / {product.club.name} / {product.name}
+            Club / {product.club.name} / {product.name}
           </h6>
         </div>
       </div>

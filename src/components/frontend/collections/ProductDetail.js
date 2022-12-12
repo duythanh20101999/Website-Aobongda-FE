@@ -147,9 +147,9 @@ function ProductDetail(props) {
               </h4>
               <div>{avail_stock}</div>
 
-              <button type="button" className="btn btn-danger mt-3">
+              {/* <button type="button" className="btn btn-danger mt-3">
                 Add to Wishlist
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

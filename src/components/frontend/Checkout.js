@@ -45,6 +45,7 @@ function Checkout() {
       if (isMounted) {
         if (res.data.status === true) {
           setPayment(res.data.data);
+          setCheckoutInput({id_payment: res.data.data[0].id})
         }
       }
     });
@@ -105,8 +106,10 @@ function Checkout() {
       address: checkoutInput.address,
       note: checkoutInput.note,
       code: checkoutInput.code,
-      id_payment: checkoutInput.id_payment,
+      id_payment:Number(checkoutInput.id_payment),
     };
+
+    console.log(data);
 
     switch (payment_mode) {
       case "cod":
@@ -188,12 +191,12 @@ function Checkout() {
                     <select
                       name="id_payment"
                       onChange={handleInput}
-                      value={checkoutInput.id_payment}
+                      value={Number(checkoutInput.id_payment)}
                       className="form-control"
                     >
                       {payment.map((item) => {
                         return (
-                          <option value={item.id} key={item.id}>
+                          <option value={Number(item.id)} key={item.id}>
                             {item.name}
                           </option>
                         );

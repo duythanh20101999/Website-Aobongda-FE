@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { Link, useHistory } from "react-router-dom";
-export const numberFormat = (value) =>
-  new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-  }).format(value);
+import { APP_BASE_URL, numberFormat } from "../../configs/constants";
 
 function Cart() {
   const history = useHistory();
@@ -16,7 +12,7 @@ function Cart() {
   var totalCartPrice = 0;
 
   if (!localStorage.getItem("auth_token")) {
-    history.push("/");
+    history.push("/login");
     swal("Warning", "Login to goto Cart Page", "error");
   }
 
@@ -29,7 +25,7 @@ function Cart() {
           setCart(res.data.data);
           setLoading(false);
         } else if (res.data.status === 401) {
-          history.push("/");
+          history.push("/login");
           swal("Warning", res.data.message, "error");
         }
       }
@@ -120,7 +116,7 @@ function Cart() {
                   <tr key={idx}>
                     <td width="10%">
                       <img
-                        src={`http://localhost:8083/images/${item.item.image}`}
+                        src={`${APP_BASE_URL}/images/${item.item.image}`}
                         alt={item.item.productName}
                         width="50px"
                         height="50px"

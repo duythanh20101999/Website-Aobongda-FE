@@ -31,6 +31,7 @@ function AddProduct() {
             if (isMounted) {
                 if (res.data.success === true) {
                     setCategorylist(res.data.datas);
+                    setProduct({id_club: res.data.datas[0].id})
                 }
             }
         });

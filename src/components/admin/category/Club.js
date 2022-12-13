@@ -9,8 +9,8 @@ function Club() {
     const [league, setLeague] = useState([]);
     const [clubInput, setClub] = useState({
         name: '',
-        brandId: '',
-        leagueId: '',
+        brandId: 1,
+        leagueId: 1,
         error_list: [],
     });
 
@@ -19,21 +19,22 @@ function Club() {
         setClub({ ...clubInput, [e.target.name]: e.target.value })
     }
 
+    console.log(clubInput)
     useEffect(() => {
         let isMounted = true;
-
-        axios.get(`/api/brands`).then(res => {
-            if (isMounted) {
-                if (res.data.success === true) {
-                    setBrand(res.data.datas);
-                }
-            }
-        });
 
         axios.get(`/api/leagues`).then(res => {
             if (isMounted) {
                 if (res.data.success === true) {
                     setLeague(res.data.datas);
+                }
+            }
+        });
+
+        axios.get(`/api/brands`).then(res => {
+            if (isMounted) {
+                if (res.data.success === true) {
+                    setBrand(res.data.datas);
                 }
             }
         });
@@ -48,6 +49,7 @@ function Club() {
         e.preventDefault();
 
         const data = clubInput;
+        console.log(data)
 
         axios.post(`/api/admin/create_club`, data).then(res => {
             if (res.data.success === true) {

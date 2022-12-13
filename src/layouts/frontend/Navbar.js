@@ -38,13 +38,6 @@ function Navbar() {
 	};
 
 	const handledSearch = () => {
-		// <Redirect
-		// 	to={{
-		// 		pathname: "/listProduct",
-		// 		search: "?keyword=your+face",
-		// 		state: { referrer: currentLocation }
-		// 	}}
-		// />
 		history.push('/listProduct?keyword=')
 	}
 
@@ -98,7 +91,7 @@ function Navbar() {
 							</Link>
 						</li>
 						<li>
-							<Link to={"change_password"} className="dropdown-item">
+							<Link to={"/change_password"} className="dropdown-item">
 								Change Password
 							</Link>
 						</li>
@@ -127,7 +120,7 @@ function Navbar() {
 
 					<div className="d-flex collapse navbar-collapse justify-content-end" id="searchFrm">
 						<form className="d-flex form-inline" onSubmit={handledSearch}>
-							<input name="keyword" className="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search" />
+							<input name="keyword" className="form-control me-sm-2" style={{width: "400px"}} type="search" placeholder="Search" aria-label="Search" />
 							<button className="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
 						</form>
 					</div>

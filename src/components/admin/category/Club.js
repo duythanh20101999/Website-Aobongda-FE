@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 
 function Club() {
 
+    document.title = "Add Club"
     const [brand, setBrand] = useState([]);
     const [league, setLeague] = useState([]);
     const [clubInput, setClub] = useState({

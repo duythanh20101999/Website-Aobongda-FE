@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { APP_BASE_URL, numberFormat } from "../../configs/constants";
 
 function Cart() {
+  document.title = "Cart"
   const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
@@ -41,9 +42,9 @@ function Cart() {
       cart.map((item) =>
         cart_id === item.product_Id
           ? {
-              ...item,
-              quantity: item.quantity - (item.quantity > 1 ? 1 : 0),
-            }
+            ...item,
+            quantity: item.quantity - (item.quantity > 1 ? 1 : 0),
+          }
           : item
       )
     );
@@ -54,9 +55,9 @@ function Cart() {
       cart.map((item) =>
         cart_id === item.product_Id
           ? {
-              ...item,
-              quantity: item.quantity + (item.quantity < 10 ? 1 : 0),
-            }
+            ...item,
+            quantity: item.quantity + (item.quantity < 10 ? 1 : 0),
+          }
           : item
       )
     );

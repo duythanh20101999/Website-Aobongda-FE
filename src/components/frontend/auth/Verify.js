@@ -50,18 +50,18 @@ function Verify() {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h4 className='text-center'>Xác nhận Email</h4>
+                                <h4 className='text-center'>Confirm Email</h4>
                             </div>
                             <div className="card-body">
                                 <form onSubmit={verifySubmit}>
                                     <div className="form-group mb-3">
-                                        <p style={{color: "red", textAlign: "center"}}>Vui lòng kiểm tra mail để lấy mã xác nhận</p>
-                                        <label>Nhập mã xác nhận</label>
+                                        <p style={{color: "red", textAlign: "center"}}>Please check your email to get the confirmation code</p>
+                                        <label>Enter the confirmation code</label>
                                         <input type="text" name="text" onChange={handleInput} value={verifyInput.text} className="form-control" required />
 
                                     </div>
                                     <div className="form-group mb-3 d-flex justify-content-center">
-                                        <button type="submit" className="btn btn-primary">Xác nhận</button>
+                                        <button type="submit" className="btn btn-primary">Confirm</button>
                                     </div>
                                 </form>
                             </div>

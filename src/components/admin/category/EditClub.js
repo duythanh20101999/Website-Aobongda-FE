@@ -4,6 +4,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 function EditClub(props) {
+    document.title = "Edit Club"
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [clubInput, setClub] = useState([]);

@@ -61,17 +61,17 @@ function Login() {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h4 className='text-center'>Đăng nhập</h4>
+                                <h4 className='text-center'>Login</h4>
                             </div>
                             <div className="card-body">
                                 <form onSubmit={loginSubmit}>
                                     <div className="form-group mb-3">
-                                        <label>Tên đăng nhập</label>
+                                        <label>Username</label>
                                         <input type="text" name="username" onChange={handleInput} value={loginInput.username} className="form-control" required />
                                         <span>{loginInput.error_list.username}</span>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label>Mật khẩu</label>
+                                        <label>Password</label>
                                         <input type="password" name="password" onChange={handleInput} value={loginInput.password} className="form-control" required />
                                         <span>{loginInput.error_list.password}</span>
                                     </div>
@@ -79,10 +79,10 @@ function Login() {
                                         <span>{loginInput.error_list}</span>
                                     </div>
                                     <div className="form-group mb-3 d-flex justify-content-center">
-                                        <button type="submit" className="btn btn-primary">Đăng nhập</button>
+                                        <button type="submit" className="btn btn-primary">Login</button>
                                     </div>
                                     <div>
-                                        <Link to={'forgot_password'} style={{color: 'blue'}}>Quên mật khẩu?</Link>
+                                        <Link to={'forgot_password'} style={{color: 'blue'}}>Forgot password?</Link>
                                     </div>
                                 </form>
                             </div>

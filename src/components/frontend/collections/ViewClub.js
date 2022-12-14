@@ -6,7 +6,6 @@ function ViewClub() {
 	document.title = "Club";
 	const [loading, setLoading] = useState(true);
 	const [club, setClub] = useState([]);
-	const [product, setProduct] = useState([]);
 
 	useEffect(() => {
 		let isMountered = true;

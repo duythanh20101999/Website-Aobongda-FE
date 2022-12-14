@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 function ViewClub() {
-
+    document.title = "Club"
     const [loading, setLoading] = useState(true);
     const [clublist, setClublist] = useState([]);
 

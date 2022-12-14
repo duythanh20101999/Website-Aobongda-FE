@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 function Profile() {
+    document.title = "Account";
     const [loading, setLoading] = useState(true);
     const [accounts, setAccounts] = useState([]);
     const [isUpdate, setIsUpdate] = useState(false);

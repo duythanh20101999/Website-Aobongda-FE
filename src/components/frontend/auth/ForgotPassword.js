@@ -50,18 +50,18 @@ function ForgotPassword() {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h4 className='text-center'>Quên mật khẩu</h4>
+                                <h4 className='text-center'>Forgot password</h4>
                             </div>
                             <div className="card-body">
                                 <form onSubmit={mailSubmit}>
                                     <div className="form-group mb-3">
-                                        <p style={{color: "red", textAlign: "center"}}>Vui lòng nhập email bạn đã đăng ký</p>
-                                        <label>Nhập email</label>
+                                        <p style={{color: "red", textAlign: "center"}}>Please enter your registered email</p>
+                                        <label>Email</label>
                                         <input type="email" name="email" onChange={handleInput} value={mailInput.email} className="form-control" required />
 
                                     </div>
                                     <div className="form-group mb-3 d-flex justify-content-center">
-                                        <button type="submit" className="btn btn-primary">Xác nhận</button>
+                                        <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

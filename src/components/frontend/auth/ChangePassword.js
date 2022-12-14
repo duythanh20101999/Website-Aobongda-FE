@@ -54,24 +54,24 @@ function ChangePassword() {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h4 className='text-center'>Quên mật khẩu</h4>
+                                <h4 className='text-center'>Change Password</h4>
                             </div>
                             <div className="card-body">
                                 <form onSubmit={mailSubmit}>
                                     <div className="form-group mb-3">
-                                        <label>Nhập mật khẩu cũ</label>
+                                        <label>Old password</label>
                                         <input type="password" name="oldPassword" onChange={handleInput} value={passwordInput.oldPassword} className="form-control" required />
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label>Nhập mật khẩu mới</label>
+                                        <label>New password</label>
                                         <input type="password" name="newPassword" onChange={handleInput} value={passwordInput.newPassword} className="form-control" required />
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label>Nhập lại mật khẩu mới</label>
+                                        <label>Confirm new password</label>
                                         <input type="password" name="confirmNewPassword" onChange={handleInput} value={passwordInput.confirmNewPassword} className="form-control" required />
                                     </div>
                                     <div className="form-group mb-3 d-flex justify-content-center">
-                                        <button type="submit" className="btn btn-primary">Xác nhận</button>
+                                        <button type="submit" className="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

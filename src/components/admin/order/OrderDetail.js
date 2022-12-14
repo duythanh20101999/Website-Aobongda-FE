@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { APP_BASE_URL, numberFormat, formatDate } from '../../../configs/constants';
 
 function OrderDetail(props) {
+    document.title = "Order Detail";
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState({});

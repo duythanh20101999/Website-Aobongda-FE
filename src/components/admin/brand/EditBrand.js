@@ -4,6 +4,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 function EditBrand(props) {
+    document.title = "Edit Brand"
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [brandInput, setBrand] = useState([]);

@@ -60,6 +60,7 @@ function ViewProduct(props) {
 			isMounted = false;
 		};
 	}, [props.match.params.id, props.match.params.id_league, history]);
+
 	const submitAddtocart = (e) => {
 		e.preventDefault();
 
@@ -78,6 +79,9 @@ function ViewProduct(props) {
 				} else if (res.data.status === 500) {
 					swal("Warning", "Login to add to Cart", "error");
 				}
+			})
+			.catch((err) => {
+				swal("Warning", "Login to add to Cart", "error");
 			});
 	};
 	var showProductList = "";
@@ -87,7 +91,7 @@ function ViewProduct(props) {
 		if (product.length > 0) {
 			showProductList = product.map((item, idx) => {
 				return (
-					<div className="col-md-3" key={idx}>
+					<div className="col-md-3 py-2" key={idx}>
 						<div className="card">
 							<Link to={`/collections/${item.club.name}/${item.id}`}>
 								<img
@@ -99,7 +103,7 @@ function ViewProduct(props) {
 							<div className="card-body">
 								<div className="d-flex flex-column">
 									<Link to={`/collections/${item.club.name}/${item.id}`}>
-										<p className='text-truncate' style={{maxWidth: '100%'}} data-mdb-toggle="tooltip" title={item.name}>{item.name}</p>
+										<p className='text-truncate' style={{ maxWidth: '100%' }} data-mdb-toggle="tooltip" title={item.name}>{item.name}</p>
 									</Link>
 									<div className="d-flex">
 										<button

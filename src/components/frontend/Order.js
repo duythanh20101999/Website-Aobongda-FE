@@ -15,6 +15,7 @@ import swal from "sweetalert";
 // 	moment(value).format("DD-MM-YYYY").split("T")[0];
 
 function Order() {
+	document.title = "Order"
 	const [loading, setLoading] = useState(true);
 	const [orders, setOrders] = useState([]);
 	const history = useHistory();

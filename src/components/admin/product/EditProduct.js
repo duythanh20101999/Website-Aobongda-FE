@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { numberFormat } from '../../../configs/constants';
 
 function EditProduct(props) {
+    document.title = "Edit Product";
     const history = useHistory();
 
     const [clubList, setClublist] = useState([]);

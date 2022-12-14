@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { APP_BASE_URL, numberFormat } from '../../configs/constants';
 
 function Home() {
-    document.title="Website Football";
+    document.title = "Website Football";
     const [loading, setLoading] = useState(true);
     const [product, setProduct] = useState([]);
 
@@ -37,7 +37,7 @@ function Home() {
                             <div className="card-body">
                                 <div className="d-flex flex-column">
                                     <Link to={`/collections/${item.club.name}/${item.id}`}>
-                                        <p className='text-truncate' style={{maxWidth: '100%'}} data-mdb-toggle="tooltip" title={item.name}>{item.name}</p>
+                                        <p className='text-truncate' style={{ maxWidth: '100%' }} data-mdb-toggle="tooltip" title={item.name}>{item.name}</p>
                                     </Link>
                                     <div className="d-flex">
                                         <button

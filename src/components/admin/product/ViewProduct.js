@@ -5,7 +5,7 @@ import { APP_BASE_URL, numberFormat } from '../../../configs/constants';
 import swal from 'sweetalert';
 
 function ViewProduct() {
-
+    document.title = "Product";
     const [loading, setLoading] = useState(true);
     const [viewProduct, setProduct] = useState([]);
     const [isUpdate, setIsUpdate] = useState(false);

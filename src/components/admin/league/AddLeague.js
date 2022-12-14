@@ -4,6 +4,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 function AddLeague() {
+    document.title = "Add League"
     const [leagueInput, setLeague] = useState({
         name: '',
         error_list: [],
@@ -33,21 +34,8 @@ function AddLeague() {
 
     }
 
-    // var display_errors = [];
-    // if (categoryInput.error_list) {
-    //     display_errors = [
-    //         categoryInput.error_list.name,
-    //     ]
-    // }
-
     return (
         <div className="container-fluid px-4">
-
-            {/* {
-                display_errors.map((item) => {
-                    return (<p className="mb-1" key={item}>{item}</p>)
-                })
-            } */}
 
             <div className="card mt-4">
                 <div className="card-header">

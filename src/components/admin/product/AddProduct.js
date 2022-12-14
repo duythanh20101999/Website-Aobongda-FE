@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { numberFormat } from '../../../configs/constants';
 
 function AddProduct() {
+    document.title = "Add Product";
     const [categorylist, setCategorylist] = useState([]);
     const [productInput, setProduct] = useState({
         id_club: '',

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 function ViewLeague() {
+    document.title = "League"
 
     const [loading, setLoading] = useState(true);
     const [leaguelist, setLeaguelist] = useState([]);

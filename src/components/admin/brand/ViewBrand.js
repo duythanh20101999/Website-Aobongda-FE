@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 function ViewBrand() {
-
+    document.title = "Brand"
     const [loading, setLoading] = useState(true);
     const [brandlist, setBrandlist] = useState([]);
 

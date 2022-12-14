@@ -55,22 +55,22 @@ function Register() {
                     <div className="col-md-6">
                         <div className="card">
                             <div className="card-header">
-                                <h4 className='text-center'>Đăng ký tài khoản</h4>
+                                <h4 className='text-center'>Sign up</h4>
                             </div>
                             <div className="card-body">
                                 <form onSubmit={registerSubmit}>
                                     <div className="form-group mb-3">
-                                        <label>Tên</label>
+                                        <label>Name</label>
                                         <input type="text" name="name" onChange={handleInput} value={registerInput.name} className="form-control" required />
                                         <span>{registerInput.error_list.name}</span>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label>Tên đăng nhập</label>
+                                        <label>Username</label>
                                         <input type="text" name="username" onChange={handleInput} value={registerInput.username} className="form-control" required />
                                         <span>{registerInput.error_list.username}</span>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label>Mật khẩu</label>
+                                        <label>Password</label>
                                         <input type="password" name="password" onChange={handleInput} value={registerInput.password} minLength="8" className="form-control" required />
                                         <span>{registerInput.error_list.password}</span>
                                     </div>
@@ -80,7 +80,7 @@ function Register() {
                                         <span>{registerInput.error_list.email}</span>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label>Số điện thoại</label>
+                                        <label>Phone</label>
                                         <input type="text" name="phone" onChange={handleInput} value={registerInput.phone} className="form-control" required />
                                         <span>{registerInput.error_list.phone}</span>
                                     </div>
@@ -89,7 +89,7 @@ function Register() {
                                     </div>
                                     <br/>
                                     <div className="form-group mb-3 d-flex justify-content-center">
-                                        <button type="submit" className="btn btn-primary">Đăng ký</button>
+                                        <button type="submit" className="btn btn-primary">Signup</button>
                                     </div>
                                 </form>
                             </div>

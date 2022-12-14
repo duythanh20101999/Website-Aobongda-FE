@@ -4,6 +4,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 function AddBrand() {
+    document.title = "Add Brand"
     const [brandInput, setBrand] = useState({
         name: '',
         error_list: [],

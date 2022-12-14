@@ -4,6 +4,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 function EditLeague(props) {
+    document.title = "Edit League"
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const [leagueInput, setLeague] = useState([]);

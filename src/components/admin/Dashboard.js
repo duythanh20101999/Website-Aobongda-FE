@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { numberFormat, formatDate } from '../../configs/constants';
 
-
 function Dashboard() {
     const [loading, setLoading] = useState(true);
     const [orders, setOrders] = useState([]);

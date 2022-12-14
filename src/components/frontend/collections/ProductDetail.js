@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { APP_BASE_URL, numberFormat } from "../../../configs/constants";
 
 function ProductDetail(props) {
+  document.title = "Product Detail";
   const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
@@ -135,10 +136,6 @@ function ProductDetail(props) {
             <div className="col-md-8">
               <h4>
                 {product.name}
-                <span className="float-end badge btn-sm btn-danger badge-pil">
-                  {" "}
-                  {product.club.name}{" "}
-                </span>
               </h4>
               <p> {product.description} </p>
               <h4 className="mb-1">

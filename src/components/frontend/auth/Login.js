@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 function Login() {
 
+    document.title = "Login";
     const history = useHistory();
 
     const [loginInput, setLogin] = useState({

@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 
 function ChangePassword() {
+    document.title = "Change Password";
     const history = useHistory();
 
     const [passwordInput, setPassword] = useState({

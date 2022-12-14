@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { APP_BASE_URL, numberFormat } from "../../../configs/constants";
 
 function ViewProduct(props) {
+	document.title = "Product";
 	const history = useHistory();
 	const [loading, setLoading] = useState(true);
 	const [product, setProduct] = useState([]);
@@ -98,7 +99,7 @@ function ViewProduct(props) {
 							<div className="card-body">
 								<div className="d-flex flex-column">
 									<Link to={`/collections/${item.club.name}/${item.id}`}>
-										<h5 className='text-truncate' style={{maxWidth: '100%'}} data-mdb-toggle="tooltip" title={item.name}>{item.name}</h5>
+										<p className='text-truncate' style={{maxWidth: '100%'}} data-mdb-toggle="tooltip" title={item.name}>{item.name}</p>
 									</Link>
 									<div className="d-flex">
 										<button

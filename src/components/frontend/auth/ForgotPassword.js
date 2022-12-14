@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 
 function ForgotPassword() {
+    document.title = "Forgot Password";
     const history = useHistory();
 
     const [mailInput, setMail] = useState({

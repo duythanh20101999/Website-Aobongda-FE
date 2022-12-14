@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 function ViewCategory()
 {
+    document.title = "View Club";
     const [loading, setLoading] = useState(true);
     const [category, setCategory] = useState([]);
 

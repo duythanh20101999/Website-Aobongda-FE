@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 
 function Register() {
-
+    document.title = "Register";
     const history = useHistory();
     const [registerInput, setRegister] = useState({
         name: '',

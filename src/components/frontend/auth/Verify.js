@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 
 function Verify() {
+    document.title = "Verify";
     const history = useHistory();
 
     const [verifyInput, setVerify] = useState({

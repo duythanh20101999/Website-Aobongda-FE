@@ -5,6 +5,7 @@ import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import { APP_BASE_URL } from "../../../configs/constants";
 
 function SearchProduct(props) {
+  document.title = "Product"
   const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState([]);
@@ -74,7 +75,7 @@ function SearchProduct(props) {
               <div className="card-body">
                 <div className="d-flex flex-column">
                   <Link to={`/collections/${item.club.name}/${item.id}`}>
-                    <h5
+                    <p
                       style={{
                         overflow: "hidden",
                         textOverflow: "ellipsis",
@@ -82,7 +83,7 @@ function SearchProduct(props) {
                       }}
                     >
                       {item.name}
-                    </h5>
+                    </p>
                   </Link>
                   <div className="d-flex">
                     <button

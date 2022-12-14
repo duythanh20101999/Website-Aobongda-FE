@@ -61,17 +61,9 @@ function ViewProduct(props) {
 		};
 	}, [props.match.params.id, props.match.params.id_league, history]);
 
-	const submitAddtocart = (e) => {
-		e.preventDefault();
-
-		// const data = {
-		//   product_id: product.id,
-		//   product_qty: quantity,
-		// };
-
-		// axios.post(`/api/cart/add`, data).then((res) => {
+	const submitAddtocart = (id) => {
 		axios
-			.post(`/api/cart/add?productId=${product[0].id}&quantity=${quantity}`)
+			.post(`/api/cart/add?productId=${id}&quantity=${quantity}`)
 			.then((res) => {
 				if (res.data.status === true) {
 					//Created - Data Inserted
@@ -115,7 +107,7 @@ function ViewProduct(props) {
 										<button
 											type="button"
 											className="btn btn-warning w-75 text-danger"
-											onClick={submitAddtocart}
+											onClick={() => submitAddtocart(item.id)}
 										>
 											Add to Cart
 										</button>

@@ -16,11 +16,9 @@ function SearchProduct(props) {
 
 	const keyword = queryParams.get("keyword");
 
-	const submitAddtocart = (e) => {
-		e.preventDefault();
-
+	const submitAddtocart = (id) => {
 		axios
-			.post(`/api/cart/add?productId=${product[0].id}&quantity=${quantity}`)
+			.post(`/api/cart/add?productId=${id}&quantity=${quantity}`)
 			.then((res) => {
 				if (res.data.status === true) {
 					//Created - Data Inserted
@@ -93,7 +91,7 @@ function SearchProduct(props) {
 										<button
 											type="button"
 											className="btn btn-warning w-75 text-danger"
-											onClick={submitAddtocart}
+											onClick={() => submitAddtocart(item.id)}
 										>
 											Add to Cart
 										</button>

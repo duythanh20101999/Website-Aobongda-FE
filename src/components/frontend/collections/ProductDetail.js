@@ -46,13 +46,6 @@ function ProductDetail(props) {
 
 	const submitAddtocart = (e) => {
 		e.preventDefault();
-
-		// const data = {
-		//   product_id: product.id,
-		//   product_qty: quantity,
-		// };
-
-		// axios.post(`/api/cart/add`, data).then((res) => {
 		axios
 			.post(`/api/cart/add?productId=${product.id}&quantity=${quantity}`)
 			.then((res) => {
